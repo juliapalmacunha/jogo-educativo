@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual é o animal?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- Botões acima do título -->
+            <div class="category-buttons">
+                <button class="category" id="animals-btn">Animais</button>
+                <button class="category" id="fruits-btn">Frutas</button>
+                <button class="category" id="colors-btn">Cores</button>
+                <button class="category" id="objects-btn">Objetos</button>
+            </div>
+
+            <h1>Qual é o animal?</h1>
+        </header>
+
+        <main>
+            <div class="game-area">
+                <div class="animal-display" data-animal>
+                    <img src="img/cachorro.png" alt="cachorro" id="animal-image" class="animal-image">
+                </div>
+                <div class="input-area">
+                    <h2>Escreva o nome do animal:</h2>
+                    <input type="text" id="animal-name" placeholder="Digite aqui!">
+                    <button id="check-answer">Verificar</button>
+                    <div id="feedback"></div>
+                    <!-- Mensagem positiva e botão de próximo -->
+                    <div id="sucesso" class="hidden">
+                        <p class="positive-message">Parabéns, você acertou!</p>
+                        <p class="click-animal">Clique no animal!</p>
+                        <button id="next-animal" class="next-button">
+                            &#x27A1; <!-- Seta em Unicode -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

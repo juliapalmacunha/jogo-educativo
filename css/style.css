@@ -1,0 +1,224 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Baloo 2', sans-serif;
+    background-color: #FFF9D9; /* Fundo amarelo pastel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Botões de categoria */
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.category {
+    font-family: 'Fredoka One', cursive;
+    background-color: #FF6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.category:hover {
+    background-color: #FF9933;
+    transform: translateY(-2px);
+}
+
+h1 {
+    font-size: 3rem;
+    color: #FF6600;
+    font-family: 'Fredoka One', cursive;
+}
+
+/* Main */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Game Area */
+.game-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 450px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.animal-display {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animal-image {
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.animal-image:hover {
+    transform: scale(1.05);
+}
+
+.input-area {
+    width: 40%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input Area */
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    border: 2px solid #FF6600;
+    border-radius: 12px;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px 30px;
+    background-color: #FF6600;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #FF9933;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    color: #28a745;
+}
+
+/* Sucesso e Próximo */
+.hidden {
+    display: none;
+}
+
+#sucesso {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.positive-message {
+    color: #28a745;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: aparecer 0.5s ease-in-out;
+}
+
+.click-animal {
+    font-size: 1.2rem;
+    color: #FF6600;
+    margin-bottom: 20px;
+    animation: aparecer 1s ease-in-out;
+}
+
+.next-button {
+    background-color: #ffcc00; /* Amarelo */
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+
+.next-button:hover {
+    background-color: #34d058;
+}
+
+/* Animações */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .game-area {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .animal-display, .input-area {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input[type="text"], button {
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 10px 20px;
+    }
+
+    .category-buttons {
+        flex-direction: column;
+    }
+}
