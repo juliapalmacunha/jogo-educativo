@@ -48,7 +48,7 @@ function preCarregarImagens(imagens) {
 }
 
 
-var indiceAtual = 0
+let indiceAtual = 0
 //função para trocar a imagem
 function trocaImagem() {
   indiceAtual = (indiceAtual + 1) % imagens.length;
@@ -68,7 +68,6 @@ function habilitarBotao(valor) {
 
 
 let acertou = false
-
 //verificando se o nome do animal possui na url
 function verificaAnimal() {
   const urlFoto = imagemAnimal.src
