@@ -1,11 +1,11 @@
-const animal = document.querySelector("[data-animal]")
-const imagemAnimal = document.getElementById("animal-image")
-const input = document.getElementById("animal-name")
-const botaoVerificar = document.getElementById("check-answer")
-const mensagem = document.getElementById("sucesso")
-const botaoTrocaAnimal = document.getElementById("next-animal")
+const animal = document.querySelector("[data-animal]");
+const imagemAnimal = document.getElementById("animal-image");
+const input = document.getElementById("animal-name");
+const botaoVerificar = document.getElementById("check-answer");
+const mensagem = document.getElementById("sucesso");
+const botaoTrocaAnimal = document.getElementById("next-animal");
 
-//troca de imagens
+// Imagens de animais
 const imagens = [
   'img/cachorro.png',
   'img/coelho.png',
@@ -20,7 +20,7 @@ const imagens = [
   'img/tartaruga.png'
 ];
 
-//tradução dos animais
+// Traduções dos animais
 const traducoesAnimais = {
   "cachorro": "dog",
   "coelho": "rabbit",
@@ -35,73 +35,42 @@ const traducoesAnimais = {
   "tartaruga": "turtle"
 };
 
-
-
-//função de pre carregando as imagens
+// Função para pré-carregar as imagens
 function preCarregarImagens(imagens) {
   const cacheImagens = [];
   imagens.forEach((src) => {
-    const img = new Image()
-    img.src = src 
-    cacheImagens.push(img)
-  })
+    const img = new Image();
+    img.src = src;
+    cacheImagens.push(img);
+  });
 }
 
+let indiceAtual = 0;
 
-let indiceAtual = 0
-//função para trocar a imagem
+// Função para trocar a imagem
 function trocaImagem() {
   indiceAtual = (indiceAtual + 1) % imagens.length;
   imagemAnimal.src = imagens[indiceAtual];
-  imagemAnimal.alt = Object.keys(traducoesAnimais)[indiceAtual]; 
+  imagemAnimal.alt = Object.keys(traducoesAnimais)[indiceAtual];
 }
 
-
-//verificando se botao pode se habilitar
-function habilitarBotao(valor) {
-  if (valor === "") {
-    botaoVerificar.disabled = true
-  } else {
-    botaoVerificar.disabled = false
-  }
-}
-
-
-let acertou = false
-//verificando se o nome do animal possui na url
+// Função para verificar o nome do animal
 function verificaAnimal() {
-  const urlFoto = imagemAnimal.src
-  const filtroUrlFoto = urlFoto.split('/').pop().split('.')[0];
+  const urlFoto = imagemAnimal.src;
+  const filtroUrlFoto = urlFoto.split('/').pop().split('.')[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "");
+  const valorInput = input.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "");
 
-  if (filtroUrlFoto === valorAtualInput) {
-    input.style.border = "2px solid green"
+  if (filtroUrlFoto === valorInput) {
+    input.style.border = "2px solid green";
     mensagem.classList.remove('hidden');
     mensagem.classList.add('visible');
-    acertou = true
   } else {
-    input.style.border = "2px solid red"
-    trocandoStyles()
-    acertou = false
+    input.style.border = "2px solid red";
+    trocandoStyles();
   }
 }
 
-
-  imagemAnimal.addEventListener("click", (evento) => {
-    if(acertou === true){
-      const nome = evento.target.alt
-      const palavra = traducoesAnimais[nome]
-      falarPalavra(palavra)
-    }
-  })
-
-
-//função para trocar os estilos
-function trocandoStyles() {
-  mensagem.classList.remove('visible');
-  mensagem.classList.add('hidden');
-}
-
-//funçao para a fala 
+// Função para falar o nome do animal
 function falarPalavra(palavra) {
   const sintetizador = window.speechSynthesis;
   const fala = new SpeechSynthesisUtterance(palavra);
@@ -109,54 +78,63 @@ function falarPalavra(palavra) {
   sintetizador.speak(fala);
 }
 
-
-//botao para trocar a imagem
-botaoTrocaAnimal.addEventListener("click", () => {
-  trocaImagem()
-  trocandoStyles()
-  input.style.border = "2px solid #FF6600"
-  input.value = ""
-})
-
-
-//botao verificar
-botaoVerificar.addEventListener("click", () => {
-  if (!botaoVerificar.disabled) {
-    verificaAnimal()
+// Evento de clique na imagem
+imagemAnimal.addEventListener("click", (evento) => {
+  if (mensagem.classList.contains("visible")) {
+    const nome = evento.target.alt;
+    const palavra = traducoesAnimais[nome];
+    falarPalavra(palavra);
   }
-})
-
-//evento de tecla quando o input esta em foco
-input.addEventListener("keydown", (evento) => {
-  if (evento.key === 'Enter') {
-    if(!botaoVerificar.disabled){
-      verificaAnimal()
-    } 
-}
-})
-
-//habilitando botao verificar em tempo real
-let valorAtualInput = input.value
-input.addEventListener("input", (evento) => {
-  valorAtualInput = evento.target.value;
-  const inputFiltrado = valorAtualInput.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "");
-  valorAtualInput = inputFiltrado
-  habilitarBotao(valorAtualInput)
-})
-
-
-//verificando botao habilitado assim que a pagina recarrega
-document.addEventListener("DOMContentLoaded", () => {
-  habilitarBotao(valorAtualInput);
-  preCarregarImagens(imagens)
 });
 
+// Função para trocar os estilos da mensagem
+function trocandoStyles() {
+  mensagem.classList.remove('visible');
+  mensagem.classList.add('hidden');
+}
 
+// Evento para trocar a imagem ao clicar no botão
+botaoTrocaAnimal.addEventListener("click", () => {
+  trocaImagem();
+  trocandoStyles();
+  input.style.border = "2px solid #FF6600";
+  input.value = "";
+});
 
+// Evento de verificação ao clicar no botão
+botaoVerificar.addEventListener("click", () => {
+  if (!botaoVerificar.disabled) {
+    verificaAnimal();
+  }
+});
 
+// Evento de tecla 'Enter' para verificar o animal
+input.addEventListener("keydown", (evento) => {
+  if (evento.key === 'Enter') {
+    if (!botaoVerificar.disabled) {
+      verificaAnimal();
+    }
+  }
+});
 
+// Habilitar/desabilitar o botão verificar em tempo real
+let valorAtualInput = input.value;
+input.addEventListener("input", (evento) => {
+  valorAtualInput = evento.target.value;
+  habilitarBotao(valorAtualInput);
+});
 
+// Função para habilitar o botão verificar
+function habilitarBotao(valor) {
+  if (valor === "") {
+    botaoVerificar.disabled = true;
+  } else {
+    botaoVerificar.disabled = false;
+  }
+}
 
-
-
-
+// Verificando se o botão deve ser habilitado ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+  habilitarBotao(valorAtualInput);
+  preCarregarImagens(imagens);
+});
