@@ -32,4 +32,4 @@ Para rodar o projeto localmente, siga os seguintes passos:
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/jogo-interativo.git
+   git clone https://github.com/seu-usuario/jogo-educativo.git
