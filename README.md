@@ -29,7 +29,32 @@ Você pode jogar o jogo diretamente em produção através deste link:
 
 Para rodar o projeto localmente, siga os seguintes passos:
 
-1. Clone este repositório:
-
+1. **Clone este repositório:**
    ```bash
    git clone https://github.com/seu-usuario/jogo-educativo.git
+   ```
+
+2. **Acesse a pasta do projeto:**
+   ```bash
+   cd jogo-educativo
+   ```
+
+3. **Instale as dependências do projeto (se houver um `package.json`):**
+   ```bash
+   npm install
+   ```
+   Ou, se estiver usando Yarn:
+   ```bash
+   yarn install
+   ```
+
+4. **Inicie o projeto localmente:**
+   - Para um servidor local rápido, execute:
+     ```bash
+     npx live-server
+     ```
+
+5. **Verifique se o projeto está rodando corretamente:**
+   - Caso algo não funcione, verifique o console do navegador (F12 → Console) para identificar possíveis erros.
+
+Agora seu projeto está pronto para ser executado localmente! 🚀
