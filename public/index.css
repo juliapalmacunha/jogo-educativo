@@ -1,14 +1,14 @@
-/* Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
+
 body {
     font-family: 'Baloo 2', sans-serif;
-    background-color: #FFF9D9; /* Fundo amarelo pastel */
+    background-color: #FFF9D9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,13 +22,13 @@ body {
     padding: 20px;
 }
 
-/* Header */
+
 header {
     text-align: center;
     margin-bottom: 40px;
 }
 
-/* Botões de categoria */
+
 .category-buttons {
     display: flex;
     justify-content: center;
@@ -59,7 +59,6 @@ h1 {
     font-family: 'Fredoka One', cursive;
 }
 
-/* Main */
 main {
     display: flex;
     justify-content: center;
@@ -67,7 +66,7 @@ main {
     flex-direction: column;
 }
 
-/* Game Area */
+
 .game-area {
     display: flex;
     justify-content: space-between;
@@ -109,7 +108,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Input Area */
+
 input[type="text"] {
     width: 100%;
     padding: 15px;
@@ -141,7 +140,7 @@ button:hover {
     color: #28a745;
 }
 
-/* Sucesso e Próximo */
+
 .hidden {
     display: none;
 }
@@ -167,7 +166,7 @@ button:hover {
 }
 
 .next-button {
-    background-color: #ffcc00; /* Amarelo */
+    background-color: #ffcc00; 
     color: #fff;
     font-size: 1.5rem;
     border: none;
@@ -182,7 +181,7 @@ button:hover {
     background-color: #34d058;
 }
 
-/* Animações */
+
 @keyframes aparecer {
     from {
         opacity: 0;
@@ -194,7 +193,7 @@ button:hover {
     }
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
     .game-area {
         flex-direction: column;
